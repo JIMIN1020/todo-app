@@ -18,3 +18,7 @@
   height: 45vh;
   overflow-y: scroll;
 }
+
+.todoList::-webkit-scrollbar {
+  display: none;
+}
