@@ -27,7 +27,6 @@
   cursor: pointer;
 }
 
-/* 실제 input 을 숨기기 위한 코드 */
 .checkbox input {
   width: 0;
   height: 0;
@@ -41,6 +40,11 @@
   font-size: 1.5rem;
   margin-left: 0.8rem;
   color: #3f8d46;
+  border-radius: 50%;
+}
+
+.icon:hover {
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 .text {
@@ -50,4 +54,10 @@
 
 .text span {
   font-size: 14px;
+}
+
+.button {
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }

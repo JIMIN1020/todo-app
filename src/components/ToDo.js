@@ -1,5 +1,5 @@
 import styles from "./ToDo.module.css";
-import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
+import { BsCheckCircleFill, BsCheckCircle, BsXLg } from "react-icons/bs";
 
 export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
   return (
@@ -42,10 +42,10 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
       </div>
       <button
         type="submit"
-        style={{ marginRight: "10px" }}
+        className={styles.button}
         onClick={() => handleClick(todo.id)}
       >
-        X
+        <BsXLg />
       </button>
     </div>
   );
