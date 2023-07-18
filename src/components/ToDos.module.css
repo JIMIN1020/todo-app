@@ -1,21 +1,52 @@
 .todoBox {
-  width: 30%;
-  height: 52vh;
-  margin-left: 27px;
+  width: 300px;
+  height: 420px;
 
   display: block;
-  border-radius: 5px;
+  border-radius: 10px;
 
   overflow-y: hidden;
+  background-color: rgba(219, 219, 219, 0.282);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: #3f8d46;
+  margin-top: 2px;
+}
+
+.iconFill {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: #3f8d46;
+  margin-top: 2px;
+}
+
+.iconRed {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: tomato;
+  margin-top: 2px;
 }
 
 .todoBox h2 {
   text-align: center;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .todoList {
-  height: 45vh;
+  height: 44vh;
+  margin-top: -8px;
   overflow-y: scroll;
 }
 

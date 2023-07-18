@@ -60,7 +60,7 @@ function App() {
         <div className="box-top">
           <div className="title">
             <h1>To do</h1>
-            <p>Write what you have to do</p>
+            <h4>Write what you have to do</h4>
           </div>
           <InputForm
             value={value}
@@ -71,9 +71,9 @@ function App() {
           />
         </div>
         <div className="box-bottom">
-          <ToDos title={"overdue"} todo={todo} setTodo={setTodo} />
-          <ToDos title={"working"} todo={todo} setTodo={setTodo} />
-          <ToDos title={"completed"} todo={todo} setTodo={setTodo} />
+          <ToDos title={"Overdue"} todo={todo} setTodo={setTodo} />
+          <ToDos title={"In Progress"} todo={todo} setTodo={setTodo} />
+          <ToDos title={"Completed"} todo={todo} setTodo={setTodo} />
         </div>
       </div>
     </div>

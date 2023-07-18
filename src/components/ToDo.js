@@ -12,7 +12,13 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
             onChange={() => handleCheck(todo.id)}
           />
           <div className={styles.icon}>
-            {todo.completed ? <BsCheckCircleFill /> : <BsCheckCircle />}
+            {todo.completed ? (
+              <BsCheckCircleFill />
+            ) : overdue ? (
+              <BsCheckCircle style={{ color: "tomato" }} />
+            ) : (
+              <BsCheckCircle />
+            )}
           </div>
         </label>
 

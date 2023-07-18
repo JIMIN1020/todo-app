@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ToDos.module.css";
 import { ToDo } from "./ToDo.js";
 import { STORAGE_KEY } from "../App";
+import { BsCheckCircleFill, BsCheckCircle, BsXLg } from "react-icons/bs";
 
 export const ToDos = ({ title, todo, setTodo }) => {
   /* --------------- todo 삭제 처리 --------------- */
@@ -26,10 +27,13 @@ export const ToDos = ({ title, todo, setTodo }) => {
 
   /* --------------- title에 맞게 렌더링 --------------- */
   switch (title) {
-    case "completed":
+    case "Completed":
       return (
         <div className={styles.todoBox}>
-          <h2>{title}</h2>
+          <div className={styles.title}>
+            <BsCheckCircleFill className={styles.iconFill} />
+            <h2>{title}</h2>
+          </div>
           <div className={styles.todoList}>
             {todo.map((todoData) => {
               if (todoData.completed) {
@@ -48,10 +52,13 @@ export const ToDos = ({ title, todo, setTodo }) => {
           </div>
         </div>
       );
-    case "overdue":
+    case "Overdue":
       return (
         <div className={styles.todoBox}>
-          <h2>{title}</h2>
+          <div className={styles.title}>
+            <BsCheckCircle className={styles.iconRed} />
+            <h2>{title}</h2>
+          </div>
           <div className={styles.todoList}>
             {todo.map((todoData) => {
               if (
@@ -74,10 +81,13 @@ export const ToDos = ({ title, todo, setTodo }) => {
           </div>
         </div>
       );
-    case "working":
+    case "In Progress":
       return (
         <div className={styles.todoBox}>
-          <h2>{title}</h2>
+          <div className={styles.title}>
+            <BsCheckCircle className={styles.icon} />
+            <h2>{title}</h2>
+          </div>
           <div className={styles.todoList}>
             {todo.map((todoData) => {
               if (
