@@ -45,7 +45,7 @@
 }
 
 .todoList {
-  height: 44vh;
+  height: 370px;
   margin-top: -8px;
   overflow-y: scroll;
 }

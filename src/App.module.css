@@ -28,7 +28,7 @@ body {
   transition: all 0.5s ease-in 0s;
 }
 
-.box-top {
+.boxTop {
   width: 100%;
   height: 150px;
 
@@ -37,7 +37,7 @@ body {
   justify-content: space-between;
 }
 
-.box-bottom {
+.boxBottom {
   width: 94%;
   height: 450px;
 
@@ -54,18 +54,18 @@ body {
 .title h4 {
   margin-top: -10px;
   font-size: 15px;
-  font-weight: 450;
+  font-weight: 400;
 }
 
 @media all and (max-width: 1024px) {
   .box {
     width: 550px;
   }
-  .box-top {
+  .boxTop {
     display: flex;
     flex-direction: column;
   }
   .title {
-    margin-bottom: -20px;
+    margin-bottom: -30px;
   }
 }

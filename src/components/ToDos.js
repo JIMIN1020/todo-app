@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ToDos.module.css";
 import { ToDo } from "./ToDo.js";
 import { STORAGE_KEY } from "../App";
-import { BsCheckCircleFill, BsCheckCircle, BsXLg } from "react-icons/bs";
+import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 
 export const ToDos = ({ title, todo, setTodo }) => {
   /* --------------- todo 삭제 처리 --------------- */

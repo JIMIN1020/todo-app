@@ -61,3 +61,9 @@
   background-color: rgba(0, 0, 0, 0);
   border: none;
 }
+
+@media all and (max-width: 1024px) {
+  .todo {
+    width: 350px;
+  }
+}

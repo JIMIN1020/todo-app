@@ -1,7 +1,8 @@
-import { useState } from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import styles from "./App.module.css";
 import { InputForm } from "./components/InputForm";
 import { ToDos } from "./components/ToDos";
+import { SingleToDo } from "./components/SingleToDo";
 
 export const STORAGE_KEY = "todoData";
 
@@ -14,6 +15,14 @@ function App() {
   const [todo, setTodo] = useState(initialData); // todo 데이터
   const [value, setValue] = useState(""); // 입력창 데이터
   const [selectedDate, setSelectedDate] = useState(new Date()); // 선택한 날짜
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth); // 스크린 사이즈
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resizeListener);
+  });
 
   /* --------------- todo 추가 처리 --------------- */
   const handleSubmit = (e) => {
@@ -55,10 +64,10 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="box">
-        <div className="box-top">
-          <div className="title">
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <div className={styles.boxTop}>
+          <div className={styles.title}>
             <h1>To do</h1>
             <h4>Write what you have to do</h4>
           </div>
@@ -70,11 +79,17 @@ function App() {
             setSelectedDate={setSelectedDate}
           />
         </div>
-        <div className="box-bottom">
-          <ToDos title={"Overdue"} todo={todo} setTodo={setTodo} />
-          <ToDos title={"In Progress"} todo={todo} setTodo={setTodo} />
-          <ToDos title={"Completed"} todo={todo} setTodo={setTodo} />
-        </div>
+        {innerWidth >= 1024 ? (
+          <div className={styles.boxBottom}>
+            <ToDos title={"Overdue"} todo={todo} setTodo={setTodo} />
+            <ToDos title={"In Progress"} todo={todo} setTodo={setTodo} />
+            <ToDos title={"Completed"} todo={todo} setTodo={setTodo} />
+          </div>
+        ) : (
+          <div>
+            <SingleToDo todo={todo} setTodo={setTodo} />
+          </div>
+        )}
       </div>
     </div>
   );

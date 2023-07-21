@@ -1,0 +1,100 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.todoBox {
+  width: 450px;
+  height: 350px;
+
+  display: block;
+  border-radius: 10px;
+  margin-top: 30px;
+
+  overflow-y: hidden;
+  background-color: rgba(219, 219, 219, 0.282);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: #3f8d46;
+  margin-top: 2px;
+}
+
+.iconFill {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: #3f8d46;
+  margin-top: 2px;
+}
+
+.iconRed {
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  color: tomato;
+  margin-top: 2px;
+}
+
+.todoBox h2 {
+  text-align: center;
+  font-size: 17px;
+}
+
+.todoList {
+  height: 305px;
+  margin-top: -8px;
+  overflow-y: auto;
+}
+
+.todoList::-webkit-scrollbar {
+  display: none;
+}
+
+.buttonBox {
+  background-color: rgba(219, 219, 219, 0.282);
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 400px;
+  height: 40px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 13px;
+}
+
+.input {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.radioBtn {
+  background-color: #3f8d46;
+  color: white;
+  font-weight: 550;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+
+label,
+input {
+  display: inline-block;
+  font-size: 13px;
+}
