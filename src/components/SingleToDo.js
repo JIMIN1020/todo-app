@@ -137,7 +137,10 @@ export const SingleToDo = ({ todo, setTodo }) => {
       <div className={styles.buttonBox}>
         <label
           className={selected === "All" ? styles.selected : styles.radioBtn}
-          style={{ borderRadius: "15px 0px 0px 15px" }}
+          style={{
+            borderRadius: "15px 0px 0px 15px",
+            borderRight: "0.5px dotted gray",
+          }}
         >
           <input
             type="radio"
@@ -149,6 +152,9 @@ export const SingleToDo = ({ todo, setTodo }) => {
         </label>
         <label
           className={selected === "Overdue" ? styles.selected : styles.radioBtn}
+          style={{
+            borderRight: "0.5px dotted gray",
+          }}
         >
           <input
             type="radio"
@@ -162,6 +168,9 @@ export const SingleToDo = ({ todo, setTodo }) => {
           className={
             selected === "In Progress" ? styles.selected : styles.radioBtn
           }
+          style={{
+            borderRight: "0.5px dotted gray",
+          }}
         >
           <input
             type="radio"

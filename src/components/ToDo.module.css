@@ -9,13 +9,13 @@
   justify-content: space-between;
   align-items: center;
 
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: transform 0.2s ease-in-out;
   overflow: hidden;
 }
 
 .todo:hover {
-  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25), 2px 4px 10px rgba(0, 0, 0, 0.22);
+  transform: scale(1.05);
 }
 
 .checkbox {
@@ -41,10 +41,11 @@
   margin-left: 0.8rem;
   color: #3f8d46;
   border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
 }
 
 .icon:hover {
-  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
 }
 
 .text {
