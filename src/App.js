@@ -77,6 +77,7 @@ function App() {
             handleSubmit={handleSubmit}
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
+            innerWidth={innerWidth}
           />
         </div>
         {innerWidth >= 1024 ? (
@@ -87,7 +88,7 @@ function App() {
           </div>
         ) : (
           <div>
-            <SingleToDo todo={todo} setTodo={setTodo} />
+            <SingleToDo todo={todo} setTodo={setTodo} innerWidth={innerWidth} />
           </div>
         )}
       </div>

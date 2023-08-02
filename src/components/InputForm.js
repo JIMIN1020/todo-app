@@ -1,4 +1,3 @@
-import "../App.css";
 import styles from "./InputForm.module.css";
 import { Calendar } from "./Calendar";
 
@@ -8,6 +7,7 @@ export const InputForm = ({
   value,
   selectedDate,
   setSelectedDate,
+  innerWidth,
 }) => {
   /* --------------- 입력 값 처리 --------------- */
   const handleChange = (e) => {
@@ -27,6 +27,7 @@ export const InputForm = ({
         <Calendar
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          innerWidth={innerWidth}
         />
         <input className={styles.button} type="submit" value="add To Do" />
       </form>

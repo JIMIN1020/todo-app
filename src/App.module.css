@@ -69,3 +69,22 @@ body {
     margin-bottom: -30px;
   }
 }
+
+@media all and (max-width: 768px) {
+  .box {
+    width: 350px;
+  }
+  .box-top {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    margin-bottom: -20px;
+    display: flex;
+    align-items: center;
+  }
+  .title h4 {
+    margin-top: 35px;
+    margin-left: 10px;
+  }
+}

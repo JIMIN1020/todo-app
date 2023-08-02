@@ -3,8 +3,9 @@ import styles from "./SingleToDo.module.css";
 import { ToDo } from "./ToDo.js";
 import { STORAGE_KEY } from "../App";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
+import ButtonBox from "./ButtonBox";
 
-export const SingleToDo = ({ todo, setTodo }) => {
+export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
   const [selected, setSelected] = useState("All"); // 선택된 버튼
 
   /* --------------- 버튼 클릭 처리 --------------- */
@@ -134,67 +135,11 @@ export const SingleToDo = ({ todo, setTodo }) => {
             })}
         </div>
       </div>
-      <div className={styles.buttonBox}>
-        <label
-          className={selected === "All" ? styles.selected : styles.radioBtn}
-          style={{
-            borderRadius: "15px 0px 0px 15px",
-            borderRight: "0.5px dotted gray",
-          }}
-        >
-          <input
-            type="radio"
-            className={styles.input}
-            checked={selected === "All"}
-            onClick={() => handleSelect("All")}
-          />
-          All
-        </label>
-        <label
-          className={selected === "Overdue" ? styles.selected : styles.radioBtn}
-          style={{
-            borderRight: "0.5px dotted gray",
-          }}
-        >
-          <input
-            type="radio"
-            className={styles.input}
-            checked={selected === "Overdue"}
-            onClick={() => handleSelect("Overdue")}
-          />
-          <span>Overdue</span>
-        </label>
-        <label
-          className={
-            selected === "In Progress" ? styles.selected : styles.radioBtn
-          }
-          style={{
-            borderRight: "0.5px dotted gray",
-          }}
-        >
-          <input
-            type="radio"
-            className={styles.input}
-            checked={selected === "In Progress"}
-            onClick={() => handleSelect("In Progress")}
-          />
-          <span>In Progress</span>
-        </label>
-        <label
-          className={
-            selected === "Completed" ? styles.selected : styles.radioBtn
-          }
-          style={{ borderRadius: "0px 15px 15px 0px" }}
-        >
-          <input
-            type="radio"
-            className={styles.input}
-            checked={selected === "Completed"}
-            onClick={() => handleSelect("Completed")}
-          />
-          <span>Completed</span>
-        </label>
-      </div>
+      <ButtonBox
+        selected={selected}
+        handleSelect={handleSelect}
+        innerWidth={innerWidth}
+      />
     </div>
   );
 };

@@ -15,7 +15,7 @@
 }
 
 .todo:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .checkbox {
@@ -66,5 +66,11 @@
 @media all and (max-width: 1024px) {
   .todo {
     width: 350px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .todo {
+    width: 250px;
   }
 }

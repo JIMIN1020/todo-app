@@ -3,8 +3,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BsCalendarWeek } from "react-icons/bs";
 import styled from "styled-components";
 
-export const Calendar = ({ selectedDate, setSelectedDate }) => {
-  const ExampleCustomInput = ({ onClick }) => (
+export const Calendar = ({ selectedDate, setSelectedDate, innerWidth }) => {
+  const CustomInput = ({ onClick }) => (
     <DatePickerDiv
       style={{
         width: "120px",
@@ -30,7 +30,15 @@ export const Calendar = ({ selectedDate, setSelectedDate }) => {
       onChange={(date) => {
         setSelectedDate(date);
       }}
-      customInput={<ExampleCustomInput />}
+      customInput={
+        innerWidth <= 768 ? (
+          <BsCalendarWeek
+            style={{ width: "20px", height: "18px", marginTop: "5px" }}
+          />
+        ) : (
+          <CustomInput />
+        )
+      }
     />
   );
 };
