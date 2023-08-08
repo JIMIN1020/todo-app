@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import styles from "./SingleToDo.module.css";
+import styles from "../styles/SingleToDo.module.css";
 import { ToDo } from "./ToDo.js";
-import { STORAGE_KEY } from "../App";
+import { STORAGE_KEY } from "../routes/Home";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 import ButtonBox from "./ButtonBox";
 

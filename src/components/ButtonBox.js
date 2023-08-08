@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./ButtonBox.module.css";
+import styles from "../styles/ButtonBox.module.css";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 
 const ButtonBox = ({ selected, handleSelect, innerWidth }) => {

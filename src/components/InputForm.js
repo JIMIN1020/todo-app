@@ -1,4 +1,4 @@
-import styles from "./InputForm.module.css";
+import styles from "../styles/InputForm.module.css";
 import { Calendar } from "./Calendar";
 
 export const InputForm = ({

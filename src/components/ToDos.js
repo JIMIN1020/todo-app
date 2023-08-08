@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./ToDos.module.css";
+import styles from "../styles/ToDos.module.css";
 import { ToDo } from "./ToDo.js";
-import { STORAGE_KEY } from "../App";
+import { STORAGE_KEY } from "../routes/Home";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 
 export const ToDos = ({ title, todo, setTodo }) => {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./App.module.css";
-import { InputForm } from "./components/InputForm";
-import { ToDos } from "./components/ToDos";
-import { SingleToDo } from "./components/SingleToDo";
+import styles from "../styles/Home.module.css";
+import { InputForm } from "../components/InputForm";
+import { ToDos } from "../components/ToDos";
+import { SingleToDo } from "../components/SingleToDo";
 
 export const STORAGE_KEY = "todoData";
 
@@ -11,7 +11,7 @@ const initialData = localStorage.getItem(STORAGE_KEY)
   ? JSON.parse(localStorage.getItem(STORAGE_KEY))
   : [];
 
-function App() {
+const Home = () => {
   const [todo, setTodo] = useState(initialData); // todo 데이터
   const [value, setValue] = useState(""); // 입력창 데이터
   const [selectedDate, setSelectedDate] = useState(new Date()); // 선택한 날짜
@@ -94,6 +94,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Home;

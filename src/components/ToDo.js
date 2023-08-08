@@ -1,4 +1,4 @@
-import styles from "./ToDo.module.css";
+import styles from "../styles/ToDo.module.css";
 import { BsCheckCircleFill, BsCheckCircle, BsXLg } from "react-icons/bs";
 
 export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
