@@ -3,8 +3,14 @@ import styles from "../styles/LogIn.module.css";
 import { FcGoogle } from "react-icons/fc";
 import Lottie from "lottie-react";
 import checkLottie from "../assets/checkLottie.json";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../myFirebase";
 
 const LogIn = () => {
+  const onLogInClick = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
   return (
     <>
       <div className={styles.container}>
@@ -18,7 +24,7 @@ const LogIn = () => {
           </div>
 
           <div className={styles.btnContainer}>
-            <button>
+            <button onClick={onLogInClick}>
               <FcGoogle className={styles.icon} /> Continue with Google
             </button>
           </div>
