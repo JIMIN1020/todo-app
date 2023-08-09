@@ -10,15 +10,29 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 import { auth } from "../myFirebase";
+import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const onGoogleClick = async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      console.log("Google login successful");
+      navigate("/");
+    } catch (error) {
+      console.error("Google login error:", error);
+    }
   };
   const onGithubClick = async () => {
-    const provider = new GithubAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      const provider = new GithubAuthProvider();
+      await signInWithPopup(auth, provider);
+      console.log("GitHub login successful");
+      navigate("/");
+    } catch (error) {
+      console.error("GitHub login error:", error);
+    }
   };
   return (
     <>
