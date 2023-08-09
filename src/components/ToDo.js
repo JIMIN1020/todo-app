@@ -9,7 +9,7 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
           <input
             type="checkbox"
             checked={todo.completed}
-            onChange={() => handleCheck(todo.id)}
+            onChange={() => handleCheck(todo.docID)}
           />
           <div className={styles.icon}>
             {todo.completed ? (
@@ -49,7 +49,7 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
       <button
         type="submit"
         className={styles.button}
-        onClick={() => handleClick(todo.id)}
+        onClick={() => handleClick(todo.docID)}
       >
         <BsXLg />
       </button>
