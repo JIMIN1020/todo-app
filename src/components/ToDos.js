@@ -1,30 +1,9 @@
 import React from "react";
 import styles from "../styles/ToDos.module.css";
 import { ToDo } from "./ToDo.js";
-import { STORAGE_KEY } from "../routes/Home";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 
-export const ToDos = ({ title, todo, setTodo }) => {
-  /* --------------- todo 삭제 처리 --------------- */
-  const handleClick = (id) => {
-    const newTodo = todo.filter((data) => data.id !== id);
-    setTodo(newTodo);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodo));
-  };
-
-  /* --------------- todo 완료 처리 --------------- */
-  const handleCheck = (id) => {
-    let newTodo = todo.map((data) => {
-      if (data.id === id) {
-        data.completed = !data.completed;
-      }
-      return data;
-    });
-
-    setTodo(newTodo);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodo));
-  };
-
+export const ToDos = ({ title, todo, handleClick, handleCheck }) => {
   /* --------------- title에 맞게 렌더링 --------------- */
   switch (title) {
     case "Completed":
@@ -39,9 +18,8 @@ export const ToDos = ({ title, todo, setTodo }) => {
               if (todoData.completed) {
                 return (
                   <ToDo
-                    key={todoData.id}
+                    key={todoData.docID}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={false}
@@ -68,9 +46,8 @@ export const ToDos = ({ title, todo, setTodo }) => {
               ) {
                 return (
                   <ToDo
-                    key={todoData.id}
+                    key={todoData.docID}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={true}
@@ -97,9 +74,8 @@ export const ToDos = ({ title, todo, setTodo }) => {
               ) {
                 return (
                   <ToDo
-                    key={todoData.id}
+                    key={todoData.docID}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={false}

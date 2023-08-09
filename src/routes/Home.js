@@ -3,20 +3,21 @@ import styles from "../styles/Home.module.css";
 import { InputForm } from "../components/InputForm";
 import { ToDos } from "../components/ToDos";
 import { SingleToDo } from "../components/SingleToDo";
-import { auth } from "../myFirebase";
 import Profile from "../components/Profile";
-
-export const STORAGE_KEY = "todoData";
-
-/* --------------- 이전 todo 데이터 불러오기 --------------- */
-const initialData = localStorage.getItem(STORAGE_KEY)
-  ? JSON.parse(localStorage.getItem(STORAGE_KEY))
-  : [];
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  onSnapshot,
+  orderBy,
+  query,
+  updateDoc,
+} from "firebase/firestore";
+import { auth, db } from "../myFirebase";
 
 const Home = () => {
-  const [todo, setTodo] = useState(initialData); // todo 데이터
-  const [value, setValue] = useState(""); // 입력창 데이터
-  const [selectedDate, setSelectedDate] = useState(new Date()); // 선택한 날짜
+  const [todo, setTodo] = useState([]); // todo 데이터
   const [innerWidth, setInnerWidth] = useState(window.innerWidth); // 스크린 사이즈
 
   useEffect(() => {
@@ -24,45 +25,36 @@ const Home = () => {
       setInnerWidth(window.innerWidth);
     };
     window.addEventListener("resize", resizeListener);
-  });
+    getToDoData();
+  }, []);
 
-  /* --------------- todo 추가 처리 --------------- */
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // 입력값 없으면 종료
-    if (value === "") return;
-
-    // 새로운 todo 생성
-    const newTodo = {
-      id: selectedDate.getTime(),
-      dateValue: Math.floor(selectedDate.getTime() / (24 * 60 * 60 * 1000)),
-      date: `${selectedDate.getFullYear()}-${
-        selectedDate.getMonth() + 1
-      }-${selectedDate.getDate()}`,
-      content: value,
-      completed: false,
-    };
-
-    // 새로운 todo 추가한 뒤 정렬하여 저장
-    const newToDos = sortToDo(newTodo);
-    setTodo(newToDos);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newToDos));
-
-    // 리셋
-    setValue("");
-    setSelectedDate(new Date());
+  /* --------------- todo 가져오기 --------------- */
+  const getToDoData = () => {
+    const q = query(
+      collection(db, auth.currentUser.uid),
+      orderBy("createdAt", "asc")
+    );
+    onSnapshot(q, (snapshot) => {
+      const todoData = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        docID: doc.id,
+      }));
+      setTodo(todoData);
+    });
   };
 
-  /* --------------- todo 정렬 --------------- */
-  const sortToDo = (newTodo) => {
-    const copy = [...todo, newTodo];
-    copy.sort((a, b) => {
-      if (a.dateValue > b.dateValue) return 1;
-      else if (a.dateValue < b.dateValue) return -1;
-      else return 0;
-    });
-    return copy;
+  /* --------------- todo 삭제 처리 --------------- */
+  const handleClick = async (docId) => {
+    const docRef = doc(db, auth.currentUser.uid, docId);
+    await deleteDoc(docRef);
+  };
+
+  /* --------------- todo 완료 처리 --------------- */
+  const handleCheck = async (docId) => {
+    const docRef = doc(db, auth.currentUser.uid, docId);
+    const docSnapShot = await getDoc(docRef);
+    const currentValue = docSnapShot.data().completed;
+    await updateDoc(docRef, { completed: !currentValue });
   };
 
   return (
@@ -74,24 +66,37 @@ const Home = () => {
             <h1>To do</h1>
             <h4>할 일 목록을 작성하고 관리하세요.</h4>
           </div>
-          <InputForm
-            value={value}
-            setValue={setValue}
-            handleSubmit={handleSubmit}
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-            innerWidth={innerWidth}
-          />
+          <InputForm innerWidth={innerWidth} />
         </div>
         {innerWidth >= 1024 ? (
           <div className={styles.boxBottom}>
-            <ToDos title={"Overdue"} todo={todo} setTodo={setTodo} />
-            <ToDos title={"In Progress"} todo={todo} setTodo={setTodo} />
-            <ToDos title={"Completed"} todo={todo} setTodo={setTodo} />
+            <ToDos
+              title={"Overdue"}
+              todo={todo}
+              handleClick={handleClick}
+              handleCheck={handleCheck}
+            />
+            <ToDos
+              title={"In Progress"}
+              todo={todo}
+              handleClick={handleClick}
+              handleCheck={handleCheck}
+            />
+            <ToDos
+              title={"Completed"}
+              todo={todo}
+              handleClick={handleClick}
+              handleCheck={handleCheck}
+            />
           </div>
         ) : (
           <div>
-            <SingleToDo todo={todo} setTodo={setTodo} innerWidth={innerWidth} />
+            <SingleToDo
+              todo={todo}
+              innerWidth={innerWidth}
+              handleClick={handleClick}
+              handleCheck={handleCheck}
+            />
           </div>
         )}
       </div>

@@ -1,36 +1,15 @@
 import React, { useState } from "react";
 import styles from "../styles/SingleToDo.module.css";
 import { ToDo } from "./ToDo.js";
-import { STORAGE_KEY } from "../routes/Home";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 import ButtonBox from "./ButtonBox";
 
-export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
+export const SingleToDo = ({ todo, innerWidth, handleClick, handleCheck }) => {
   const [selected, setSelected] = useState("All"); // 선택된 버튼
 
   /* --------------- 버튼 클릭 처리 --------------- */
   const handleSelect = (name) => {
     setSelected(name);
-  };
-
-  /* --------------- todo 삭제 처리 --------------- */
-  const handleClick = (id) => {
-    const newTodo = todo.filter((data) => data.id !== id);
-    setTodo(newTodo);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodo));
-  };
-
-  /* --------------- todo 완료 처리 --------------- */
-  const handleCheck = (id) => {
-    let newTodo = todo.map((data) => {
-      if (data.id === id) {
-        data.completed = !data.completed;
-      }
-      return data;
-    });
-
-    setTodo(newTodo);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newTodo));
   };
 
   /* --------------- 렌더링 --------------- */
@@ -61,7 +40,6 @@ export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
                   <ToDo
                     key={todoData.id}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={true}
@@ -72,7 +50,6 @@ export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
                   <ToDo
                     key={todoData.id}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={false}
@@ -91,7 +68,6 @@ export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
                   <ToDo
                     key={todoData.id}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={true}
@@ -110,7 +86,6 @@ export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
                   <ToDo
                     key={todoData.id}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={false}
@@ -125,7 +100,6 @@ export const SingleToDo = ({ todo, setTodo, innerWidth }) => {
                   <ToDo
                     key={todoData.id}
                     todo={todoData}
-                    setTodo={setTodo}
                     handleClick={handleClick}
                     handleCheck={handleCheck}
                     overdue={false}
