@@ -1,0 +1,17 @@
+.profile {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px 20px;
+}
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.04);
+}

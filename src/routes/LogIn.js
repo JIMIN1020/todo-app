@@ -1,14 +1,23 @@
 import React from "react";
 import styles from "../styles/LogIn.module.css";
 import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 import Lottie from "lottie-react";
 import checkLottie from "../assets/checkLottie.json";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
 import { auth } from "../myFirebase";
 
 const LogIn = () => {
-  const onLogInClick = async () => {
+  const onGoogleClick = async () => {
     const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+  const onGithubClick = async () => {
+    const provider = new GithubAuthProvider();
     await signInWithPopup(auth, provider);
   };
   return (
@@ -24,8 +33,11 @@ const LogIn = () => {
           </div>
 
           <div className={styles.btnContainer}>
-            <button onClick={onLogInClick}>
+            <button onClick={onGoogleClick}>
               <FcGoogle className={styles.icon} /> Continue with Google
+            </button>
+            <button onClick={onGithubClick}>
+              <FaGithub className={styles.icon} /> Continue with Github
             </button>
           </div>
         </div>

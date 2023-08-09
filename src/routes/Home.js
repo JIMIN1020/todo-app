@@ -3,6 +3,8 @@ import styles from "../styles/Home.module.css";
 import { InputForm } from "../components/InputForm";
 import { ToDos } from "../components/ToDos";
 import { SingleToDo } from "../components/SingleToDo";
+import { auth } from "../myFirebase";
+import Profile from "../components/Profile";
 
 export const STORAGE_KEY = "todoData";
 
@@ -65,11 +67,12 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
+      <Profile />
       <div className={styles.box}>
         <div className={styles.boxTop}>
           <div className={styles.title}>
             <h1>To do</h1>
-            <h4>Write what you have to do</h4>
+            <h4>할 일 목록을 작성하고 관리하세요.</h4>
           </div>
           <InputForm
             value={value}

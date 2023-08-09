@@ -3,6 +3,7 @@ import AppRouter from "./AppRouter";
 import { auth } from "../myFirebase";
 
 const App = () => {
+  const [init, setInit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
@@ -11,9 +12,10 @@ const App = () => {
       } else {
         setIsLoggedIn(false);
       }
+      setInit(true);
     });
   }, []);
-  return <AppRouter isLoggedIn={isLoggedIn} />;
+  return <>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : undefined}</>;
 };
 
 export default App;
