@@ -4,7 +4,7 @@ import LogIn from "../routes/LogIn";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       {isLoggedIn ? (
         <Routes>
           <Route path="/" element={<Home />} />
