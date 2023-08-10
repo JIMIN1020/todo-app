@@ -43,23 +43,14 @@ const LogIn = () => {
           <span>할 일 목록을 작성하고 관리하세요.</span>
         </Title>
         <LottieBox>
-          <Lottie
-            animationData={checkLottie}
-            style={{ width: "250px", height: "250px" }}
-          />
+          <Lottie animationData={checkLottie} className="lottie" />
         </LottieBox>
         <BtnContainer>
           <button onClick={onGoogleClick}>
-            <FcGoogle
-              style={{ width: "20px", height: "20px", marginRight: "7px" }}
-            />{" "}
-            Continue with Google
+            <FcGoogle className="icon" /> Continue with Google
           </button>
           <button onClick={onGithubClick}>
-            <FaGithub
-              style={{ width: "20px", height: "20px", marginRight: "7px" }}
-            />{" "}
-            Continue with Github
+            <FaGithub className="icon" /> Continue with Github
           </button>
         </BtnContainer>
       </Box>
@@ -105,6 +96,11 @@ const LottieBox = styled.div`
   width: 100%;
   height: 150px;
   margin-top: 30px;
+
+  .lottie {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const BtnContainer = styled.div`
@@ -127,5 +123,11 @@ const BtnContainer = styled.div`
     &:hover {
       background-color: rgb(255, 255, 255);
     }
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
   }
 `;
