@@ -1,25 +1,40 @@
 import React, { useState } from "react";
-import styles from "../styles/Profile.module.css";
 import ProfileModal from "./ProfileModal";
 import { auth } from "../myFirebase";
+import { styled } from "styled-components";
 
 const Profile = () => {
   const [userModalOpen, setUserModalOpen] = useState(false);
   return (
-    <div className={styles.profile}>
-      <button
-        className={styles.button}
-        onClick={() => setUserModalOpen((prev) => !prev)}
-      >
+    <UserProfile>
+      <UserImg onClick={() => setUserModalOpen((prev) => !prev)}>
         <img
           src={auth.currentUser.photoURL}
           width="40"
           style={{ borderRadius: "50%" }}
         />
-      </button>
+      </UserImg>
       {userModalOpen && <ProfileModal />}
-    </div>
+    </UserProfile>
   );
 };
 
 export default Profile;
+
+const UserProfile = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin: 10px 20px;
+`;
+
+const UserImg = styled.div`
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+`;
