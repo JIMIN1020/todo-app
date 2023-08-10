@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import styles from "../styles/SingleToDo.module.css";
 import { ToDo } from "./ToDo.js";
 import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 import ButtonBox from "./ButtonBox";
+import { styled } from "styled-components";
+import { flexCenter } from "../GlobalStyles";
 
 export const SingleToDo = ({ todo, innerWidth, handleClick, handleCheck }) => {
   const [selected, setSelected] = useState("All"); // 선택된 버튼
@@ -14,21 +15,19 @@ export const SingleToDo = ({ todo, innerWidth, handleClick, handleCheck }) => {
 
   /* --------------- 렌더링 --------------- */
   return (
-    <div className={styles.container}>
-      <div className={styles.todoBox}>
-        <div className={styles.title}>
+    <Container>
+      <ToDoBox>
+        <Title>
           {selected === "Completed" && (
-            <BsCheckCircleFill className={styles.iconFill} />
+            <BsCheckCircleFill className="iconFill" />
           )}
           {(selected === "All" || selected === "In Progress") && (
-            <BsCheckCircle className={styles.icon} />
+            <BsCheckCircle className="icon" />
           )}
-          {selected === "Overdue" && (
-            <BsCheckCircle className={styles.iconRed} />
-          )}
+          {selected === "Overdue" && <BsCheckCircle className="iconRed" />}
           <h2>{selected}</h2>
-        </div>
-        <div className={styles.todoList}>
+        </Title>
+        <ToDoList>
           {selected === "All" &&
             todo.map((todoData) => {
               if (
@@ -107,13 +106,86 @@ export const SingleToDo = ({ todo, innerWidth, handleClick, handleCheck }) => {
                 );
               }
             })}
-        </div>
-      </div>
+        </ToDoList>
+      </ToDoBox>
       <ButtonBox
         selected={selected}
         handleSelect={handleSelect}
         innerWidth={innerWidth}
       />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    width: 350px;
+    align-items: center;
+  }
+`;
+
+const ToDoBox = styled.div`
+  width: 450px;
+  height: 350px;
+
+  display: block;
+  border-radius: 10px;
+  margin-top: 30px;
+
+  overflow-y: hidden;
+  background-color: rgba(219, 219, 219, 0.282);
+
+  h2 {
+    text-align: center;
+    font-size: 17px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 300px;
+    height: 370px;
+    margin-top: 5px;
+  }
+`;
+
+const Title = styled.div`
+  ${flexCenter}
+  .icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+    color: #3f8d46;
+    margin-top: 2px;
+  }
+
+  .iconFill {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+    color: #3f8d46;
+    margin-top: 2px;
+  }
+
+  .iconRed {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
+    color: tomato;
+    margin-top: 2px;
+  }
+`;
+
+const ToDoList = styled.div`
+  height: 305px;
+  margin-top: -8px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @media screen and (max-width: 768px) {
+    height: 325px;
+  }
+`;

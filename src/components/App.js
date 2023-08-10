@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "./AppRouter";
 import { auth } from "../myFirebase";
+import GlobalStyles from "../GlobalStyles";
 
 const App = () => {
   const [init, setInit] = useState(false);
@@ -15,7 +16,12 @@ const App = () => {
       setInit(true);
     });
   }, []);
-  return <>{init ? <AppRouter isLoggedIn={isLoggedIn} /> : undefined}</>;
+  return (
+    <>
+      <GlobalStyles />
+      {init ? <AppRouter isLoggedIn={isLoggedIn} /> : undefined}
+    </>
+  );
 };
 
 export default App;

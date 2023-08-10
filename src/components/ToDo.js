@@ -1,17 +1,17 @@
-import styles from "../styles/ToDo.module.css";
+import { styled } from "styled-components";
 import { BsCheckCircleFill, BsCheckCircle, BsXLg } from "react-icons/bs";
 
 export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
   return (
-    <div className={styles.todo}>
-      <div className={styles.checkbox}>
+    <ToDoContainer>
+      <CheckBox>
         <label>
           <input
             type="checkbox"
             checked={todo.completed}
             onChange={() => handleCheck(todo.docID)}
           />
-          <div className={styles.icon}>
+          <IconContainer>
             {todo.completed ? (
               <BsCheckCircleFill />
             ) : overdue ? (
@@ -19,20 +19,19 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
             ) : (
               <BsCheckCircle />
             )}
-          </div>
+          </IconContainer>
         </label>
 
-        <div className={styles.text}>
+        <Text>
           <span
-            className={styles.content}
             style={
               todo.completed
                 ? { marginLeft: "10px", textDecorationLine: "line-through" }
                 : { marginLeft: "10px" }
             }
           >
-            {todo.content.length > 30
-              ? todo.content.substr(0, 29) + "..."
+            {todo.content.length > 26
+              ? todo.content.substr(0, 25) + "..."
               : todo.content}
           </span>
           <span
@@ -44,15 +43,79 @@ export const ToDo = ({ todo, handleClick, handleCheck, overdue }) => {
           >
             {todo.date}
           </span>
-        </div>
-      </div>
-      <button
-        type="submit"
-        className={styles.button}
-        onClick={() => handleClick(todo.docID)}
-      >
+        </Text>
+      </CheckBox>
+      <Button type="submit" onClick={() => handleClick(todo.docID)}>
         <BsXLg />
-      </button>
-    </div>
+      </Button>
+    </ToDoContainer>
   );
 };
+
+const ToDoContainer = styled.div`
+  background-color: white;
+  width: 250px;
+  height: 60px;
+  border-radius: 1rem;
+  margin: 10px auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: transform 0.2s ease-in-out;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+  @media screen and (max-width: 1024px) {
+    width: 350px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 250px;
+  }
+`;
+
+const CheckBox = styled.div`
+  display: flex;
+  align-items: center;
+  label {
+    cursor: pointer;
+  }
+  input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+  }
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-left: 0.8rem;
+  color: #3f8d46;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+`;
+
+const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  span {
+    font-size: 14px;
+  }
+`;
+
+const Button = styled.button`
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+`;
