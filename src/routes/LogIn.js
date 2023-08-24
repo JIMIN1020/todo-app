@@ -15,24 +15,12 @@ import { flexCenter } from "../GlobalStyles";
 
 const LogIn = () => {
   const navigate = useNavigate();
-  const onGoogleClick = async () => {
+  const onLoginClick = async (provider) => {
     try {
-      const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      console.log("Google login successful");
       navigate("/");
     } catch (error) {
-      console.error("Google login error:", error);
-    }
-  };
-  const onGithubClick = async () => {
-    try {
-      const provider = new GithubAuthProvider();
-      await signInWithPopup(auth, provider);
-      console.log("GitHub login successful");
-      navigate("/");
-    } catch (error) {
-      console.error("GitHub login error:", error);
+      console.error("login error:", error);
     }
   };
   return (
@@ -46,10 +34,10 @@ const LogIn = () => {
           <Lottie animationData={checkLottie} className="lottie" />
         </LottieBox>
         <BtnContainer>
-          <button onClick={onGoogleClick}>
+          <button onClick={() => onLoginClick(new GoogleAuthProvider())}>
             <FcGoogle className="icon" /> Continue with Google
           </button>
-          <button onClick={onGithubClick}>
+          <button onClick={() => onLoginClick(new GithubAuthProvider())}>
             <FaGithub className="icon" /> Continue with Github
           </button>
         </BtnContainer>

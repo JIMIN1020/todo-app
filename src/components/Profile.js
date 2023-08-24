@@ -11,6 +11,7 @@ const Profile = () => {
         <img
           src={auth.currentUser.photoURL}
           width="40"
+          alt="profile"
           style={{ borderRadius: "50%" }}
         />
       </UserImg>

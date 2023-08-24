@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { InputForm } from "../components/InputForm";
 import { ToDos } from "../components/ToDos";
 import { SingleToDo } from "../components/SingleToDo";
@@ -45,21 +45,22 @@ const Home = () => {
   };
 
   /* --------------- todo 삭제 처리 --------------- */
-  const handleClick = async (docId) => {
+  const handleClick = useCallback(async (docId) => {
     const docRef = doc(db, auth.currentUser.uid, docId);
     await deleteDoc(docRef);
-  };
+  }, []);
 
   /* --------------- todo 완료 처리 --------------- */
-  const handleCheck = async (docId) => {
+  const handleCheck = useCallback(async (docId) => {
     const docRef = doc(db, auth.currentUser.uid, docId);
     const docSnapShot = await getDoc(docRef);
     const currentValue = docSnapShot.data().completed;
     await updateDoc(docRef, { completed: !currentValue });
-  };
+  }, []);
 
   return (
     <Container>
+      {console.log("render!")}
       <Profile />
       <Box>
         <BoxTop>
