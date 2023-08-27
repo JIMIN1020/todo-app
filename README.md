@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# To Do App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> https://jimin1020.github.io/todo-app
 
-## Available Scripts
+**React**, **Firebase**로 개발하고 **gh-pages**로 배포한 간단한 To Do Application 입니다.
 
-In the project directory, you can run:
+![todo](https://github.com/JIMIN1020/todo-app/assets/121474189/d8c20c1e-db4b-4b22-92a6-b801438f0776)
 
-### `npm start`
+할 일과 마감 기한을 입력하면, `Overdue` | `In Progress` | `Completed` 3가지의 카테고리로 나뉘어 나타납니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- `Overdue` : 마감 기한이 지난 To Do
+- `In Progress` : 진행 중인 To Do
+- `Completed` : 완료한 To Do
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+모든 To Do는 기한에 따라 오름차순 정렬되어 나타납니다.
 
-### `npm test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 기술 스택 & 사용한 라이브러리
 
-### `npm run build`
+### 기술 스택
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- Firebase
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 라이브러리
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- react-icons
+- react-datepicker
+- lottie-react
+- styled-components
+- react-router-dom
 
-### `npm run eject`
+<br />
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 특징
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 로그인 / 로그아웃 기능
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Firebase의 Authentication 기능을 활용하여 **구글, 깃허브 로그인**을 가능하게 하였습니다.
+로그인 이후 유저가 원할 때 로그아웃 또는 회원 탈퇴를 할 수 있습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 데이터 저장
 
-## Learn More
+Firebase의 데이터베이스인 **Firestore**를 이용하여 유저가 작성한 할 일 목록을 저장하고 불러옵니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 반응형 웹
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+데스크탑, 태블릿, 모바일 사이즈에 맞게 반응형 웹을 구현했습니다.
+![size](https://github.com/JIMIN1020/todo-app/assets/121474189/593d1eab-e766-44ad-b63b-c2edf937e439)
 
-### Code Splitting
+#### 태블릿 사이즈
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![tablet size](https://github.com/JIMIN1020/todo-app/assets/121474189/69940809-04f7-4d8f-be82-6b90250362eb)
 
-### Analyzing the Bundle Size
+#### 모바일 사이즈
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![moblie size](https://github.com/JIMIN1020/todo-app/assets/121474189/e4869335-ae19-473c-8515-34fe8443d1d9)
