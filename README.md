@@ -4,6 +4,7 @@
 
 **React**, **Firebase**로 개발하고 **gh-pages**로 배포한 간단한 To Do Application 입니다.
 
+![login](https://github.com/JIMIN1020/todo-app/assets/121474189/e333e805-24f0-4ee0-a2f4-c016e359ddd9)
 ![todo](https://github.com/JIMIN1020/todo-app/assets/121474189/3a32a49e-1551-4f55-9c0b-26d804efe13f)
 
 할 일과 마감 기한을 입력하면, `Overdue` | `In Progress` | `Completed` 3가지의 카테고리로 나뉘어 나타납니다.
