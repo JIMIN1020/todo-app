@@ -1,6 +1,6 @@
 # To Do App
 
-> https://jimin1020.github.io/todo-app
+> [프로그램 설명 페이지](https://jimin1020.notion.site/To-Do-App-0808693c5ac942828a23630d3d529ff8?pvs=4)
 
 **React**, **Firebase**로 개발하고 **gh-pages**로 배포한 간단한 To Do Application 입니다.
 
